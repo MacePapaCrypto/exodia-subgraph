@@ -12,7 +12,7 @@ dataSources:
     name: OlympusStakingV2
     network: fantom
     source:
-      address: '0x8b8d40f98a2f14e2dd972b3f2e2a2cc227d1e3be'
+      address: '0x1a16805c1e60e7bf206304efdf31e7b8a151235b'
       abi: OlympusStakingV2
       startBlock: 20061075
     mapping:
@@ -55,7 +55,7 @@ dataSources:
     name: OlympusStakingV2Helper
     network: fantom
     source:
-      address: '0x43CdFC01C2DEF98C595b28E72b58D2575AA05E9B'
+      address: '0xaf9e3ce67bd74570fc3e3b4c1b985c2af0f0d0dc'
       abi: OlympusStakingV2Helper
       startBlock: 20061336
     mapping:
@@ -96,7 +96,7 @@ dataSources:
     name: DAIBondV3
     network: fantom
     source:
-      address: '0xc43db16ed7b57597170b76d3aff29708bc608483'
+      address: '0xC82514B8a3F4579abEe1592eAdD249D693A7213e'
       abi: DAIBondV3
       startBlock: 20061547
     mapping:
@@ -184,7 +184,7 @@ dataSources:
     name: ETHBondV1
     network: fantom
     source:
-      address: '0xd7cbA20A464C10FB03Bbc265D962ADa8e29af118'
+      address: '0xc82514b8a3f4579abee1592eadd249d693a7213e'
       abi: ETHBondV1
       startBlock: 21161524
     mapping:
