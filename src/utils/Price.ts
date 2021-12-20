@@ -1,5 +1,5 @@
 import {
-    SLP_EXODDAI_PAIR, SLP_WFTMUSDC_PAIR
+    SLP_WENDAI_PAIR, SLP_WFTMUSDC_PAIR
 } from './Constants'
 import { Address, BigDecimal, BigInt, log } from '@graphprotocol/graph-ts'
 import { UniswapV2Pair } from '../../generated/OlympusStakingV2/UniswapV2Pair';
@@ -23,12 +23,11 @@ export function getETHUSDRate(): BigDecimal {
 }
 
 export function getOHMUSDRate(): BigDecimal {
-    let pair = UniswapV2Pair.bind(Address.fromString(SLP_EXODDAI_PAIR))
+    let pair = UniswapV2Pair.bind(Address.fromString(SLP_WENDAI_PAIR))
 
     let reserves = pair.getReserves()
     let reserve0 = reserves.value0.toBigDecimal()
     let reserve1 = reserves.value1.toBigDecimal()
-
     let ohmRate = reserve1.div(reserve0).div(BIG_DECIMAL_1E9)
     log.debug("OHM rate {}", [ohmRate.toString()])
 

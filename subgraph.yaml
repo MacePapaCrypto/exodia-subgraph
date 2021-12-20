@@ -1,8 +1,5 @@
 specVersion: 0.0.2
-description: Exodia DAO Subgraph
-graft:
-  base: QmdCn4C5vYLouGCwW7xBa2sGTP7VF27EGvsKJKS3aF18Hx
-  block: 24078827
+description: Wen DAO Subgraph
 repository: https://github.com/ExodiaFinance/exodia-subgraph
 schema:
   file: ./schema.graphql
@@ -12,9 +9,9 @@ dataSources:
     name: OlympusStakingV2
     network: fantom
     source:
-      address: '0x1a16805c1e60e7bf206304efdf31e7b8a151235b'
+      address: '0x1a16805c1e60E7bf206304efDF31E7b8a151235B'
       abi: OlympusStakingV2
-      startBlock: 20061075
+      startBlock: 25235901
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -43,7 +40,7 @@ dataSources:
         - name: ERC20
           file: ./abis/ERC20.json
         - name: GOhmERC20
-          file: ./abis/GOhmERC20.json          
+          file: ./abis/GOhmERC20.json
       callHandlers:
         - function: stake(uint256,address)
           handler: handleStake
@@ -55,9 +52,9 @@ dataSources:
     name: OlympusStakingV2Helper
     network: fantom
     source:
-      address: '0xaf9e3ce67bd74570fc3e3b4c1b985c2af0f0d0dc'
+      address: '0xAf9e3Ce67bd74570fc3E3b4c1B985c2Af0f0D0dC'
       abi: OlympusStakingV2Helper
-      startBlock: 20061336
+      startBlock: 25236126
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -96,9 +93,9 @@ dataSources:
     name: DAIBondV3
     network: fantom
     source:
-      address: '0xC82514B8a3F4579abEe1592eAdD249D693A7213e'
+      address: '0x40159b7309cd82bf5e8eb118dcabe4781dde2f68'
       abi: DAIBondV3
-      startBlock: 20061547
+      startBlock: 25236702
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
@@ -140,59 +137,15 @@ dataSources:
     name: OHMDAIBondV4
     network: fantom
     source:
-      address: '0x5B7E66542800cA1A27402DD00f4325460553C5eb'
+      address: '0x538633080bca332ba557eabbaa4d4b1e153df166'
       abi: OHMDAIBondV4
-      startBlock: 20099251
+      startBlock: 25256801
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
         - OHMDAIBondV4
-      abis:
-        - name: OlympusStakingV2
-          file: ./abis/OlympusStakingV2.json
-        - name: sOlympusERC20V2
-          file: ./abis/sOlympusERC20V2.json
-        - name: OlympusERC20
-          file: ./abis/OlympusERC20.json
-        - name: UniswapV2Pair
-          file: ./abis/UniswapV2Pair.json
-        - name: DAIBondV3
-          file: ./abis/DAIBondV3.json
-        - name: OHMDAIBondV4
-          file: ./abis/OHMDAIBondV4.json
-        - name: ETHBondV1
-          file: ./abis/ETHBondV1.json
-        - name: CirculatingSupply
-          file: ./abis/CirculatingSupply.json
-        - name: BondingCalculator
-          file: ./abis/BondingCalculator.json
-        - name: ERC20
-          file: ./abis/ERC20.json       
-      callHandlers:
-        - function: deposit(uint256,uint256,address)
-          handler: handleDeposit
-        - function: redeem(address,bool)
-          handler: handleRedeem
-      eventHandlers:
-        - event: BondCreated(uint256,indexed uint256,indexed uint256,indexed uint256)
-          handler: handleBondCreated
-      file: ./src/OHMDAIBondV4.ts
-  #WETH
-  - kind: ethereum/contract
-    name: ETHBondV1
-    network: fantom
-    source:
-      address: '0xc82514b8a3f4579abee1592eadd249d693a7213e'
-      abi: ETHBondV1
-      startBlock: 21161524
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - ETHBondV1
       abis:
         - name: OlympusStakingV2
           file: ./abis/OlympusStakingV2.json
@@ -222,14 +175,14 @@ dataSources:
       eventHandlers:
         - event: BondCreated(uint256,indexed uint256,indexed uint256,indexed uint256)
           handler: handleBondCreated
-      file: ./src/ETHBondV1.ts
+      file: ./src/OHMDAIBondV4.ts
   - kind: ethereum/contract
     name: sOlympusERC20V2
     network: fantom
     source:
-      address: '0x8de250C65636Ef02a75e4999890c91cECd38D03D'
+      address: '0x74D02D9CFe67F1fc60019DB470b46F5b0Dc82b32'
       abi: sOlympusERC20V2
-      startBlock: 20058992
+      startBlock: 25234860
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5

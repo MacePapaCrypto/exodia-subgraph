@@ -4,7 +4,7 @@ import { DAIBondV3 } from '../../generated/DAIBondV3/DAIBondV3';
 import { ETHBondV1 } from '../../generated/ETHBondV1/ETHBondV1';
 
 import { BondDiscount, Transaction } from '../../generated/schema'
-import { DAIBOND_CONTRACTS3, DAIBOND_CONTRACTS3_BLOCK, ETHBOND_CONTRACT1, ETHBOND_CONTRACT1_BLOCK, OHMDAISLPBOND_CONTRACT4, OHMDAISLPBOND_CONTRACT4_BLOCK, } from './Constants';
+import { DAIBOND_CONTRACTS3, DAIBOND_CONTRACTS3_BLOCK, OHMDAISLPBOND_CONTRACT4, OHMDAISLPBOND_CONTRACT4_BLOCK, } from './Constants';
 import { hourFromTimestamp } from './Dates';
 import { toDecimal } from './Decimals';
 import { getOHMUSDRate } from './Price';
@@ -57,22 +57,6 @@ export function updateBondDiscounts(transaction: Transaction): void{
         let stdDebtRatioCall = bond.try_standardizedDebtRatio()
         if(!stdDebtRatioCall.reverted) {
             bd.dai_debt_ratio = stdDebtRatioCall.value;
-        }
-    }
-
-    //ETH
-    if(transaction.blockNumber.gt(BigInt.fromString(ETHBOND_CONTRACT1_BLOCK))){
-        let bond = ETHBondV1.bind(Address.fromString(ETHBOND_CONTRACT1))
-        let price_call = bond.try_bondPriceInUSD()
-        if(price_call.reverted===false && price_call.value.gt(BigInt.fromI32(0))){
-            bd.eth_discount = ohmRate.div(toDecimal(price_call.value, 18))
-            bd.eth_discount = bd.eth_discount.minus(BigDecimal.fromString("1"))
-            bd.eth_discount = bd.eth_discount.times(BigDecimal.fromString("100"))
-            log.debug("ETH Discount OHM price {}  Bond Price {}  Discount {}", [ohmRate.toString(), price_call.value.toString(), bd.eth_discount.toString()])
-        }
-        let stdDebtRatioCall = bond.try_standardizedDebtRatio()
-        if(!stdDebtRatioCall.reverted) {
-            bd.eth_debt_ratio = stdDebtRatioCall.value;
         }
     }
 
